@@ -10,7 +10,7 @@ function Register() {
 
     const register = async () => {
         try {
-            await axios.post("http://localhost:5000/api/auth/register", { email, password });
+            await axios.post("https://reacttranslator.azurewebsites.net/api/auth/register", { email, password });
             alert("Registration successful");
         } catch (error) {
             alert("Registration failed");
@@ -34,7 +34,7 @@ function Login({ setToken }) {
 
     const login = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+            const res = await axios.post("https://reacttranslator.azurewebsites.net/api/auth/login", { email, password });
             setToken(res.data.token);
             navigate("/speech");
         } catch (error) {
@@ -69,7 +69,7 @@ function SpeechTranslation({ token, setToken }) {
 
     const recognizeSpeech = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/api/speech/recognize", {
+            const res = await axios.post("https://localhost:5000/api/speech/recognize", {
                 language: selectedSpeechLanguage
             }, {
                 headers: { Authorization: `Bearer ${token}` },
@@ -82,7 +82,7 @@ function SpeechTranslation({ token, setToken }) {
 
     const translateSpeech = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/api/speech/translate", {
+            const res = await axios.post("https://localhost:5000/api/speech/translate", {
                 text,
                 targetLanguage: selectedLanguage,
             }, {

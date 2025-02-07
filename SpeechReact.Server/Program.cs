@@ -19,7 +19,7 @@ namespace SpeechReact.Server
                 WebRootPath = "wwwroot",
                 ApplicationName = System.Reflection.Assembly.GetExecutingAssembly().FullName
             });
-            builder.WebHost.UseUrls("http://localhost:5000");
+            builder.WebHost.UseUrls("https://reacttranslator.azurewebsites.net");
 
             builder.Services.AddCors(options =>
             {
