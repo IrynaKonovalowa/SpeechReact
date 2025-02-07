@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -58,13 +58,17 @@ namespace SpeechReact.Server
 
             var app = builder.Build();
 
-            app.UseCors("AllowAll");
-            app.UseAuthentication();
+
+            app.UseCors("AllowAll");            
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseRouting();
             app.UseAuthorization();
+            app.UseAuthentication();
             app.MapControllers();
-            app.UseSwagger();
-            app.UseSwaggerUI();
-            app.Run();                    
+            app.MapFallbackToFile("index.html");
+
+            app.Run();               
            
         }
     }
